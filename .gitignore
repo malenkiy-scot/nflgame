@@ -10,3 +10,8 @@ playground
 curien-db
 tags
 TAGS
+*.pyc
+nflgame/gamecenter-json
+*~
+.idea
+
