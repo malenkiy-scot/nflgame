@@ -31,10 +31,10 @@ class PowerRanking(object):
             game.save(os.path.join(path, game.away + '_' + game.home))
 
 
-    def do_power_ranking(self, balancer = 0.0):
+    def do_power_ranking(self):
         dim = len(self.teams)
 
-        init_matrix = map(lambda x: map(lambda y: balancer, range(0, dim)), range(0, dim))
+        init_matrix = map(lambda x: map(lambda y: 0.0, range(0, dim)), range(0, dim))
 
         for game in self.games:
             hindex = self.teams.index(game.home)
@@ -52,7 +52,6 @@ class PowerRanking(object):
             games_played.append(
                 sum(init_matrix[i])
                 + sum([init_matrix[j][i] for j in range(0, dim)])
-                - (2 * dim - 1)*balancer
             )
 
         for i in range(0, dim):
